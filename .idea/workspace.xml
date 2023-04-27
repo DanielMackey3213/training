@@ -5,7 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0fdd7986-3ce9-438b-9818-952dbc2a10f1" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/brightspot/meal/Meal.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/brightspot/meal/MealCourse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/bundles/bundle-default/styleguide/meal/Meal.hbs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/bundles/bundle-default/styleguide/meal/Meal.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/bundles/bundle-default/styleguide/meal/MealCourse.hbs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/bundles/bundle-default/styleguide/meal/MealCourse.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/styleguide/meal/Meal.hbs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/styleguide/meal/Meal.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/styleguide/meal/MealCourse.hbs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/styleguide/meal/MealCourse.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/brightspot/recipe/Recipe.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/brightspot/recipe/Recipe.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/brightspot/search/SearchModulePreviewViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/brightspot/search/SearchModulePreviewViewModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/brightspot/section/SectionPrefixPermalinkRule.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/brightspot/section/SectionPrefixPermalinkRule.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/styleguide/_wrapper.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/styleguide/_wrapper.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,13 +75,15 @@
     "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "mealExercise",
-    "last_opened_file_path": "/Users/danielmackey/Documents/training/core/src/main/java/brightspot/FilteringRequests",
+    "last_opened_file_path": "/Users/danielmackey/Documents/training/frontend/bundles/bundle-default/styleguide/meal",
     "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "reference.settingsdialog.IDE.editor.colors"
+    "settings.editor.selected.configurable": "reference.settingsdialog.project.grazie"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/frontend/bundles/bundle-default/styleguide/meal" />
+      <recent name="$PROJECT_DIR$/frontend/styleguide/meal" />
       <recent name="$PROJECT_DIR$/core/src/main/java/brightspot/FilteringRequests" />
       <recent name="$PROJECT_DIR$/frontend/bundles/bundle-default" />
     </key>
@@ -79,6 +95,10 @@
     </key>
     <key name="ExtractSuperBase.RECENT_KEYS">
       <recent name="brightspot.event" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="brightspot.Meal" />
+      <recent name="brightspot.recipe" />
     </key>
   </component>
   <component name="RunManager">

@@ -79,6 +79,7 @@ public class Recipe extends Content implements
     @DynamicPlaceholderMethod("getTotalTimeFallback")
     @Note("Value is in minutes")
     @ToolUi.Cluster(TIMING_CLUSTER)
+    @ToolUi.CssClass("is-third")
     private Integer totalTimeOverride;
 
     // --- Getters/setters ---
@@ -191,9 +192,9 @@ public class Recipe extends Content implements
 
     private Integer getTotalTimeFallback() {
         return Stream.of(
-            getPrepTime(),
-            getInactivePrepTime(),
-            getCookTime())
+                getPrepTime(),
+                getInactivePrepTime(),
+                getCookTime())
             .filter(Objects::nonNull)
             .mapToInt(Integer::intValue)
             .reduce(0, Integer::sum);
