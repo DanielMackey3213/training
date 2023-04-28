@@ -1,8 +1,15 @@
 {
-  "_template": "meal.hbs",
-  "title": "",
-  "internalName": "",
-  "lead": {},
-  "description": "",
-  "courses": ""
+  "_include": "/page/Page.json",
+  "_template": "/meal/MealPage.hbs",
+  "lead": {
+    "_include": "/image/Image.json"
+  },
+  "pageTitle": "{{words([5,10])}}",
+  "pageDescription": "{{words([15,25])}}",
+  "courses": [
+    {
+      "_include": "/meal/MealCourse.json",
+      "_repeat": 2
+    }
+  ]
 }

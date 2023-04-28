@@ -1,11 +1,16 @@
 {
-  "_template": "meal.hbs",
-  "title": "",
-  "internalName": "",
+  "_template": "Meal.hbs",
+  "_include": "/page/ContentPage.json",
   "lead": {
     "_include": "/_group/Leads.json"
   },
-  "description": "",
-  "courses": "",
-  "urlSlug": ""
+  "pageTitle": {
+    "_include": "/_group/RichTextElementsTiny.json"
+  },
+  "pageDescription": {
+    "_include": "/_group/RichTextElementsMedium.json"
+  },
+  "courses": {
+    "_include": "MealCourse.json"
+  }
 }

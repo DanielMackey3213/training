@@ -1,14 +1,16 @@
 package brightspot.meal;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import brightspot.article.ArticleLead;
 import brightspot.cascading.CascadingPageElements;
 import brightspot.cascading.CascadingPageElementsModification;
 import brightspot.image.WebImageAsset;
+import brightspot.module.recipe.RecipeModulePlacementInline;
 import brightspot.page.Page;
 import brightspot.permalink.AbstractPermalinkRule;
 import brightspot.promo.page.PagePromotableWithOverrides;
@@ -41,7 +43,9 @@ import com.psddev.cms.db.Site;
 import com.psddev.cms.db.ToolUi;
 import com.psddev.cms.ui.form.DynamicPlaceholderMethod;
 import com.psddev.dari.db.Recordable;
+import com.psddev.dari.util.Utils;
 import com.psddev.sitemap.SiteMapEntry;
+import org.apache.commons.lang3.StringUtils;
 
 public class Meal extends Content implements CascadingPageElements, DefaultSiteMapItem,
     HasRecipes, HasSectionWithField, HasTagsWithField,
@@ -50,21 +54,29 @@ public class Meal extends Content implements CascadingPageElements, DefaultSiteM
     @Indexed
     @Required
     @ToolUi.RichText(toolbar = TinyRichTextToolbar.class, inline = true)
-    private String title = "";
+    private String pageTitle;
     @DynamicPlaceholderMethod("getInternalNameFallback")
-    private String internalName = "";
+    private String internalName;
     @ToolUi.RichText(toolbar = MediumRichTextToolbar.class, inline = false)
-    private String description = "";
+    private String pageDescription;
     private ArticleLead lead;
     @CollectionMinimum(1)
     private List<MealCourse> courses;
 
     public String getInternalNameFallback() {
-        return RichTextUtils.richTextToPlainText(getTitle());
+        return RichTextUtils.richTextToPlainText(getPageTitle());
     }
 
-    public String getTitle() {
-        return this.title;
+    public String getPageTitle() {
+        return this.pageTitle;
+    }
+
+    public String getPageDescription() {
+        return this.pageDescription;
+    }
+
+    public ArticleLead getLead() {
+        return this.lead;
     }
 
     @Override
@@ -74,17 +86,17 @@ public class Meal extends Content implements CascadingPageElements, DefaultSiteM
 
     @Override
     public String getLinkableText() {
-        return null;
+        return getPagePromotableTitle();
     }
 
     @Override
     public String getSeoTitleFallback() {
-        return null;
+        return RichTextUtils.richTextToPlainText(pageTitle);
     }
 
     @Override
     public String getSeoDescriptionFallback() {
-        return null;
+        return RichTextUtils.richTextToPlainText(this.getPagePromotableDescription());
     }
 
     @Override
@@ -119,7 +131,7 @@ public class Meal extends Content implements CascadingPageElements, DefaultSiteM
 
     @Override
     public String getUrlSlugFallback() {
-        return null;
+        return Utils.toNormalized(RichTextUtils.richTextToPlainText(getPageTitle()));
     }
 
     @Override
@@ -287,9 +299,13 @@ public class Meal extends Content implements CascadingPageElements, DefaultSiteM
         return HasTagsWithField.super.asHasTagsWithFieldData();
     }
 
+    public String getInternalName() {
+        return this.internalName;
+    }
+
     @Override
     public String getLabel() {
-        return super.getLabel();
+        return StringUtils.firstNonBlank(getInternalName(), getInternalNameFallback());
     }
 
     @Override
@@ -303,10 +319,7 @@ public class Meal extends Content implements CascadingPageElements, DefaultSiteM
     }
 
     public List<MealCourse> getCourses() {
-        if (courses == null) {
-            courses = new ArrayList<>();
-        }
-        return courses;
+        return this.courses;
     }
 
     public void setCourses(List<MealCourse> courses) {
@@ -315,6 +328,12 @@ public class Meal extends Content implements CascadingPageElements, DefaultSiteM
 
     @Override
     public List<Recipe> getRecipes() {
-        return null;
+        return getCourses()
+            .stream()
+            .flatMap(course -> course.getDishes().stream())
+            .map(RecipeModulePlacementInline::getRecipe)
+            .filter(Objects::nonNull)
+            .collect(Collectors.toList());
     }
 }
+
